@@ -1,0 +1,48 @@
+{
+  "name": "react-redux-example",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Best app ever made in history",
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/user-event": "^12.5.0",
+    "react": "16.8.2",
+    "react-dom": "16.8.2",
+    "react-icons": "^4.4.0",
+    "react-redux": "5.0.4",
+    "react-scripts": "^3.4.4",
+    "redux": "^3.5.2",
+    "redux-thunk": "^0.1.0",
+    "web-vitals": "^0.2.4"
+  },
+  "author": "Vinicius Cerqueira Bonifacio <vinicius@choicely.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
