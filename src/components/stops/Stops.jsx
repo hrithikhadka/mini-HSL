@@ -8,7 +8,11 @@ import StopInfo from "./StopInfo";
 import "./stops.css";
 
 const url = "https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql";
-const query = `{
+
+const Stops = (props) => {
+  const { stops, fetchData, fetchFailed, fetchSuccess } = props;
+  const { data, loading, error } = stops;
+  const query = `{
   stop(id: "HSL:1020453") {
    name
    	stoptimesWithoutPatterns(numberOfDepartures:10) {
@@ -41,21 +45,18 @@ const query = `{
       } 
   }  
 }`;
+  const subscriptionKey = process.env.REACT_APP_DIGITRANSIT_SUBSCRIPTION_KEY;
 
-const options = {
-  method: "POST",
-  headers: {
-    "content-type": "application/json",
-  },
-  body: JSON.stringify({
-    query,
-  }),
-};
-
-const Stops = (props) => {
-  const { stops, fetchData, fetchFailed, fetchSuccess } = props;
-  const { data, loading, error } = stops;
-
+  const options = {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      "digitransit-subscription-key": subscriptionKey,
+    },
+    body: JSON.stringify({
+      query,
+    }),
+  };
   const getData = () => {
     fetchData();
     fetch(url, options)
