@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 import { connect } from "react-redux";
@@ -6,14 +6,18 @@ import { fetchingData, fetchingFailed, fetchingSuccess } from "../../actions";
 import { BsArrowRepeat } from "react-icons/bs";
 import StopInfo from "./StopInfo";
 import "./stops.css";
+import SearchBar from "./SearchBar";
 
 const url = "https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql";
 
 const Stops = (props) => {
   const { stops, fetchData, fetchFailed, fetchSuccess } = props;
   const { data, loading, error } = stops;
+
+  const [searchedStopId, setSearchedStopId] = useState("HSL:1020453");
+
   const query = `{
-  stop(id: "HSL:1020453") {
+  stop(id: "${searchedStopId}") {
    name
    	stoptimesWithoutPatterns(numberOfDepartures:10) {
        scheduledArrival
@@ -57,7 +61,13 @@ const Stops = (props) => {
       query,
     }),
   };
-  const getData = () => {
+
+  const handleSearchId = (stopId) => {
+    setSearchedStopId(stopId);
+    getData(stopId);
+  };
+
+  const getData = (stopId) => {
     fetchData();
     fetch(url, options)
       .then((res) => res.json())
@@ -77,6 +87,7 @@ const Stops = (props) => {
     <div className="container">
       {error && <span>{error}</span>}
       {loading && <span>Loading ...</span>}
+      <SearchBar onSearch={handleSearchId} />
       <div className="arrivals">
         <h3 className="station">{data?.name}</h3>
         <button className="refresh-data" onClick={refreshFetchData}>
