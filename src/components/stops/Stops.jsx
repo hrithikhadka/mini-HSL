@@ -8,7 +8,7 @@ import StopInfo from "./StopInfo";
 import "./stops.css";
 import SearchBar from "./SearchBar";
 
-const url = "https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql";
+const url = "https://api.digitransit.fi/routing/v2/hsl/gtfs/v1";
 
 const Stops = (props) => {
   const { stops, fetchData, fetchFailed, fetchSuccess } = props;
@@ -97,7 +97,7 @@ const Stops = (props) => {
         {data?.stoptimesWithoutPatterns?.map(
           ({ headsign, serviceDay, scheduledArrival, trip }, index) => {
             const dateOfArrival = new Date(
-              (serviceDay + scheduledArrival) * 1000
+              (serviceDay + scheduledArrival) * 1000,
             );
 
             const day = dateOfArrival.toLocaleDateString("en", {
@@ -112,7 +112,7 @@ const Stops = (props) => {
             });
 
             const arrivingIn = Math.floor(
-              (dateOfArrival - Date.now()) / 1000 / 60
+              (dateOfArrival - Date.now()) / 1000 / 60,
             );
 
             return (
@@ -125,7 +125,7 @@ const Stops = (props) => {
                 time={time}
               />
             );
-          }
+          },
         )}
       </div>
     </div>
