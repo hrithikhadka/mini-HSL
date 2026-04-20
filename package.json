@@ -1,8 +1,5 @@
 {
   "name": "react-redux-example",
-  "engines": {
-    "node": "18.x"
-  },
   "version": "0.1.0",
   "private": true,
   "description": "Best app ever made in history",
