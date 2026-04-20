@@ -75,6 +75,7 @@ const Stops = (props) => {
       .catch((e) => fetchFailed(e.message));
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     getData();
   }, []);
