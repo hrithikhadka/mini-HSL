@@ -1,5 +1,8 @@
 {
   "name": "react-redux-example",
+  "engines": {
+    "node": "18.x"
+  },
   "version": "0.1.0",
   "private": true,
   "description": "Best app ever made in history",
@@ -10,6 +13,7 @@
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.5.0",
+    "cross-env": "^7.0.3",
     "react": "16.8.2",
     "react-dom": "16.8.2",
     "react-icons": "^4.4.0",
@@ -22,8 +26,8 @@
   "author": "Vinicius Cerqueira Bonifacio <vinicius@choicely.com>",
   "license": "MIT",
   "scripts": {
-    "start": "set NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
-    "build": "react-scripts build",
+    "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
+    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
